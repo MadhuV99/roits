@@ -215,6 +215,7 @@ t <- (xbar - mu)/se * -1
 pval <- round(2 * pt(t, df, lower.tail = FALSE), 4)
 pval < sig.lvl
 
+# POWER of a Test
 ##Em.7.31
 #H0: mu1 - mu2 = 0
 #Ha: mu1 - mu2 <> 0
@@ -229,11 +230,80 @@ s2 <- 12
 xbar <- xbar1 - xbar2
 # Check normality
 #std. err.
-se <- sqrt((s1**2/n1) + (s2**2/n2))
+se <- round(sqrt((s1**2/n1) + (s2**2/n2)), 2)
 df <- min(n1 - 1, n2 - 1)
 t <- (xbar - mud)/se * -1
 pval <- round(2 * pt(t, df, lower.tail = FALSE), 4)
 pval < sig.lvl
+
+##Em.7.4
+sig.lvl <- 0.05
+z <- round(qnorm(sig.lvl/2) * -1, 2)
+ME <- z * se
+lowerTail <- round(mud - ME, 3)
+upperTail <- round(mud + ME, 3)
+
+##Em.7.35
+effect <- -3
+zeffect <- round((lowerTail - effect)/se, 2)
+power <- round(pnorm(zeffect), 2)
+
+##GP.7.36
+#H0: mu1 - mu2 = 0
+#Ha: mu1 - mu2 <> 0
+sig.lvl <- 0.05
+mud <- 0
+n1 <- 500
+xbar1 <- 10
+s1 <- 12
+n2 <- 500
+xbar2 <- 13
+s2 <- 12
+xbar <- xbar1 - xbar2
+# Check normality
+#std. err.
+se <- round(sqrt((s1**2/n1) + (s2**2/n2)), 2)
+df <- min(n1 - 1, n2 - 1)
+t <- (xbar - mud)/se * -1
+pval <- round(2 * pt(t, df, lower.tail = FALSE), 4)
+pval < sig.lvl
+#Tails
+z <- round(qnorm(sig.lvl/2) * -1, 2)
+ME <- z * se
+lowerTail <- round(mud - ME, 3)
+upperTail <- round(mud + ME, 3)
+#Power
+effect <- -3
+zeffect <- round((lowerTail - effect)/se, 2)
+power <- round(pnorm(zeffect), 3)
+
+##Em.7.37
+power <- 0.8
+zpower <- round(qnorm(0.8), 2)
+#Tail
+ztail <- round(qnorm(sig.lvl/2) * -1, 2)
+#effect <- (zpower + ztail) * se
+#effect <- (zpower + ztail) * sqrt((s1**2/n1) + (s2**2/n2))
+#effect**2 <- (zpower + ztail)**2 * (s1**2/n1) + (s2**2/n2)
+#n = n1 = n2
+n <- round(((zpower + ztail)/effect)**2 * (s1**2 + s2**2) + 1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
