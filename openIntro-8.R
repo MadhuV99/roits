@@ -279,7 +279,7 @@ power <- round(pnorm(zeffect), 3)
 
 ##Em.7.37
 power <- 0.8
-zpower <- round(qnorm(0.8), 2)
+zpower <- round(qnorm(power), 2)
 #Tail
 ztail <- round(qnorm(sig.lvl/2) * -1, 2)
 #effect <- (zpower + ztail) * se
@@ -288,14 +288,35 @@ ztail <- round(qnorm(sig.lvl/2) * -1, 2)
 #n = n1 = n2
 n <- round(((zpower + ztail)/effect)**2 * (s1**2 + s2**2) + 1)
 
+##GP.7.38
+sig.lvl <- 0.01
+power <- 0.9
+zpower <- round(qnorm(power), 2)
+ztail <- round(qnorm(sig.lvl/2) * -1, 2)
+#effect <- (zpower + ztail) * se
+(zpower + ztail)
 
-
-
-
-
-
-
-
+##Ex.7.33
+#H0: mu1 - mu2 = 0
+#Ha: mu1 - mu2 <> 0
+sig.lvl <- 0.05
+mud <- 0
+#s1 = s2 = s
+s <- 94
+s1 <- s
+s2 <- s1
+#n1 = = n2 = ?
+#xbar <- xbar1 - xbar2
+# Check normality
+power <- 0.9
+zpower <- round(qnorm(power), 2)
+ztail <- round(qnorm(sig.lvl/2) * -1, 2)
+effect <- 40
+#effect <- (zpower + ztail) * se
+#effect <- (zpower + ztail) * sqrt((s1**2/n1) + (s2**2/n2))
+#effect**2 <- (zpower + ztail)**2 * (s1**2/n1) + (s2**2/n2)
+#n = n1 = n2
+n <- round(((zpower + ztail)/effect)**2 * (s1**2 + s2**2) + 1)
 
 
 
